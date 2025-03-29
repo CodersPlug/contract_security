@@ -95,17 +95,25 @@ st.subheader("Cantidad de Horas Trabajadas (Último Mes)")
 
 # Tabla de horas trabajadas por obra
 horas_trabajadas = pd.DataFrame({
-    "Obra": ["Proyecto A", "Proyecto B", "Proyecto C", "Proyecto D", "Proyecto E", "Proyecto F"],
-    "Horas Trabajadas": [180, 165, 200, 150, 175, 190],
-    "% de Cumplimiento": [95, 82, 100, 75, 88, 92]
+    "Obra": ["Proyecto A", "Proyecto B", "Proyecto C", "Proyecto D", "Proyecto E", "Proyecto F", "Proyecto G"],
+    "Horas Trabajadas": [180, 165, 200, 150, 175, 190, 120],
+    "% de Cumplimiento": [95, 82, 100, 75, 88, 92, 60],
+    "Estado": ["✅ Supera", "✅ Supera", "✅ Supera", "✅ Cumple", "✅ Supera", "✅ Supera", "❌ No Cumple"]
 })
+
+# Ordenar por porcentaje de cumplimiento
+horas_trabajadas = horas_trabajadas.sort_values('% de Cumplimiento', ascending=False)
 
 # Mostrar la tabla con formato
 st.dataframe(
     horas_trabajadas,
     column_config={
         "Horas Trabajadas": st.column_config.NumberColumn(format="%d hrs"),
-        "% de Cumplimiento": st.column_config.NumberColumn(format="%d%%")
+        "% de Cumplimiento": st.column_config.NumberColumn(format="%d%%"),
+        "Estado": st.column_config.TextColumn(
+            "Estado vs Objetivo (75%)",
+            help="✅ Cumple/Supera: >= 75%\n❌ No Cumple: < 75%"
+        )
     },
     hide_index=True,
     use_container_width=True

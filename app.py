@@ -7,7 +7,7 @@ st.set_page_config(page_title="Tablero Gestión de Incidentes", layout="wide", p
 
 # Sección: Dashboard
 st.title("Tablero de Gestión de Casos")
-st.markdown("Indicadores clave para el seguimiento de obras")
+st.markdown("Soporte para la toma de decisiones basada en datos")
 
 # Add visual separator after header
 st.markdown("---")
